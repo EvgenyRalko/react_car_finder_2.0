@@ -1,15 +1,21 @@
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: './src/index.html',
+  filename: 'index.html',
+  inject: 'body'
+})
+
 var config = {
     entry: './src/main.js',
 
     output: {
-        path:'./src/',
-        filename: 'index.js'
+		filename: 'index.js',
+		path: path.join(__dirname, 'dist')
     },
 
     devServer: {
-        inline: true,
-        port: 5555,
-        contentBase: './src/'
+		port: 5555
     },
 
     devtool: 'source-map',
@@ -33,7 +39,8 @@ var config = {
                 loader: 'url-loader?limit=100000'
             }
         ]
-    }
+	},
+	plugins: [HtmlWebpackPluginConfig]
 };
 
 module.exports = config;
