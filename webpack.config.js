@@ -1,5 +1,7 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
@@ -10,12 +12,12 @@ var config = {
     entry: './src/main.js',
 
     output: {
-		filename: 'index.js',
-		path: path.join(__dirname, 'dist')
+  		filename: 'index.js',
+  		path: path.join(__dirname, 'dist')
     },
 
     devServer: {
-		port: 5555
+		    port: 5555
     },
 
     devtool: 'source-map',
@@ -40,7 +42,9 @@ var config = {
             }
         ]
 	},
-	plugins: [HtmlWebpackPluginConfig]
+	plugins: [
+    HtmlWebpackPluginConfig
+  ]
 };
 
 module.exports = config;
