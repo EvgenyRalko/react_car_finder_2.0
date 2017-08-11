@@ -1,16 +1,15 @@
 import React from 'react';
 
-export class LayoutSVG extends React.Component {
-  render() {
-    return (
-      <svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="960" height="560"
-         viewBox="0 0 960 560" style={{enableBackground: 'new 0 0 960 560'}} xmlSpace="preserve">
-         <style>
-            {`line { stroke: black; }`}
-         </style>
-         {(function () {
-            const rows = 8;
-            const lotsPerRow = 26;
+const generateLayout = (function(){
+  const rows = 8;
+  const lotsPerRow = 26;
+
+  const fullLayout = [].concat(layoutGrid(rows,lotsPerRow),layoutLots(rows,lotsPerRow)) ;
+
+return (fullLayout);
+})();
+
+function layoutGrid(rows, lotsPerRow) {
 
             const horizontalLines = {
               number : Math.floor(rows / 2) + 1,
@@ -60,8 +59,45 @@ export class LayoutSVG extends React.Component {
            const drawLines = [].concat(horizontalLines.readyLines, verticalLines.readyLines);
 
            return (drawLines);
-           
-       })()}
+
+       };
+
+function layoutLots(rows, lotsPerRow){
+         const rect = {
+           xAxis : 25,
+           yAxis : 18,
+           xIncrement : 35,
+           yAdjacentIncrement : 82,
+           yDriveThruIncrement: 45,
+           readyRects : []
+         }
+
+         for (let j = 0; j < rows; j++){
+           for (let i = 0; i < lotsPerRow; i++){
+             rect.readyRects.push(<rect key={Math.random()*100000} className="rect" x={rect.xAxis} y={rect.yAxis} height="40" width="30" />)
+             rect.xAxis += rect.xIncrement;
+           }
+          rect.xAxis = 25;
+          if (j%2){
+            rect.yAxis += rect.yDriveThruIncrement;
+          } else {
+            rect.yAxis += rect.yAdjacentIncrement;
+          }
+         }
+         return(rect.readyRects);
+       };
+
+
+export class LayoutSVG extends React.Component {
+  render() {
+    return (
+      <svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="960" height="560"
+         viewBox="0 0 960 560" style={{enableBackground: 'new 0 0 960 560'}} xmlSpace="preserve">
+         <style>
+            {`line { stroke: black; } rect{fill: rgba(255, 255, 255, .3); stroke: gray;}`}
+         </style>
+         {generateLayout}
+
       </svg>);
   }
 
