@@ -20,27 +20,47 @@ export class LayoutSVG extends React.Component {
             };
 
             const verticalLines = {
-              number : rows + 1,
+              number : lotsPerRow + 1,
               xAxis : 22.5,
               y1Axis : 15.5,
               y2Axis : 58,
               xIncrement: 35,
-              yIncrement : 84.5,
+              yAdjacentIncrement : 84.5,
+              yDriveThruIncrement: 42.5,
               readyLines : []
             }
 
-
             //loop to create horizontal lines
             for (let i = 0; i < horizontalLines.number; i++){
-              horizontalLines.readyLines.push(<line class="st1 avenue" x1="22.5" y1="${horizontalLines.yAxis}" x2="932.5" y2="${horizontalLines.yAxis}"/>);
-              horizontalLines.y += horizontalLines.increment;
+              horizontalLines.readyLines.push(<line key={Math.random()*100000} className="horizontal" x1="22.5" y1={horizontalLines.yAxis} x2="932.5" y2={horizontalLines.yAxis} />);
+              horizontalLines.yAxis += horizontalLines.increment;
            }
 
-           //loop to create horizontal lines
-           for (let i = 0; i < verticalLines.number; i++){
-                          
-          }
+           //loops to create vertical lines
+           for (let j = 0; j < rows; j++) {
+             if (j%2){
+               createVerticalLines();
+               verticalLines.y1Axis += verticalLines.yDriveThruIncrement;
+               verticalLines.y2Axis += verticalLines.yDriveThruIncrement;
+             } else {
+               createVerticalLines();
+               verticalLines.y1Axis += verticalLines.yAdjacentIncrement;
+               verticalLines.y2Axis += verticalLines.yAdjacentIncrement;
+             }
+           }
 
+           function createVerticalLines (){
+             for (let i = 0; i < verticalLines.number; i++){
+               verticalLines.readyLines.push(<line key={Math.random()*100000} className="vertical" x1={verticalLines.xAxis} y1={verticalLines.y1Axis} x2={verticalLines.xAxis} y2={verticalLines.y2Axis} />);
+               verticalLines.xAxis += verticalLines.xIncrement;
+            }
+            verticalLines.xAxis = 22.5;
+           }
+
+           const drawLines = [].concat(horizontalLines.readyLines, verticalLines.readyLines);
+
+           return (drawLines);
+           
        })()}
       </svg>);
   }
