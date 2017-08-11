@@ -1,0 +1,17 @@
+{
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+       "indent": [1, 4],
+       "comma-dangle": [0],
+       "react/jsx-filename-extension": [0],
+       "react/jsx-indent": [0]
+    },
+    "env": {
+        "browser": true
+    }
+}

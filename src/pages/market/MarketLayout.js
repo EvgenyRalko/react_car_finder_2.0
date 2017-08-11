@@ -4,14 +4,14 @@ import React from 'react';
 
 import { LayoutSVG } from './LayoutSVG';
 
-class MarketLayout extends React.Component{
-  render(){
-    return (
-      <div className="layout-wrapper">
-        <LayoutSVG onPlaceClick={this.onPlaceClick} />
-      </div>
-    )
-  }
+class MarketLayout extends React.Component {
+    render() {
+        return (
+            <div className="layout-wrapper">
+                <LayoutSVG onPlaceClick={this.onPlaceClick} />
+            </div>
+        )
+    }
 }
 
 export default MarketLayout;

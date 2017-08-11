@@ -5,31 +5,31 @@ import MarketPage from '../pages/market/MarketPage';
 import './styles.less';
 
 
-class App extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			isDisplayed : false
-		}
-		this.getCheckboxValue = this.getCheckboxValue.bind(this);
-	}
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isDisplayed: false,
+        };
+        this.getCheckboxValue = this.getCheckboxValue.bind(this);
+    }
 
-	getCheckboxValue (value){
-		this.setState({
-			isDisplayed : value
-		})
-	}
+    getCheckboxValue(value) {
+        this.setState({
+            isDisplayed: value
+        });
+    }
 
 
-	render(){
-		return (
-			<div>
-				<Header getCheckbox={(value) => this.getCheckboxValue(value)}/>
-				<MarketPage displayMap={this.state.isDisplayed}/>
-				<Footer />
-			</div>
-		)
-	}
+    render() {
+        return (
+            <div>
+                <Header getCheckbox={value => this.getCheckboxValue(value)} />
+                <MarketPage displayMap={this.state.isDisplayed} />
+                <Footer />
+            </div>
+        );
+    }
 }
 
 
