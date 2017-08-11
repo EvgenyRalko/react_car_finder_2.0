@@ -7,7 +7,7 @@ import { LayoutSVG } from './LayoutSVG';
 class MarketLayout extends React.Component{
   render(){
     return (
-      <div>
+      <div className="layout-wrapper">
         <LayoutSVG onPlaceClick={this.onPlaceClick} />
       </div>
     )

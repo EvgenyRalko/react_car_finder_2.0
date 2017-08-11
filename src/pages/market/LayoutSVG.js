@@ -75,8 +75,8 @@ function layoutLots(rows, lotsPerRow){
          for (let j = 0, k = 0; j < rows; j++){
            for (let i = 0; i < lotsPerRow; i++, k++){
              rect.readyRects.push(
-               <g key={Math.random()*100000} className="group-style" data-index={k}>
-                 <rect key={Math.random()*100000} className="rect" x={rect.xAxis} y={rect.yAxis} height="40" width="30" />
+               <g key={Math.random()*100000} className="group-style" data-index={k} onClick={(e) => console.log(e)}>
+                 <rect key={Math.random()*100000} className="rect-style" x={rect.xAxis} y={rect.yAxis} height="40" width="30" />
                  <text key={Math.random()*100000} className="num-style" x={rect.xAxis} y={rect.yAxis + 26}>{k+1}</text>
                </g>
              )
@@ -97,14 +97,17 @@ function layoutLots(rows, lotsPerRow){
 export class LayoutSVG extends React.Component {
   render() {
     return (
-      <svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="960" height="560"
-         viewBox="0 0 960 560" style={{enableBackground: 'new 0 0 960 560'}} xmlSpace="preserve">
-         <style>
-            {`line { stroke: black; } rect{fill: rgba(255, 255, 255, .3); stroke: gray;}`}
-         </style>
-         {generateLayout}
+      <div className="svg-layout-component">
+        <svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="960" height="560"
+           viewBox="0 0 960 560" style={{enableBackground: 'new 0 0 960 560'}} xmlSpace="preserve">
+           <style>
+              {`line { stroke: black; } rect{fill: rgba(255, 255, 255, .3); stroke: gray;} svg{background-color: #EBEBE9}`}
+           </style>
+           {generateLayout}
+        </svg>
+      </div>
 
-      </svg>);
+    );
   }
 
 }

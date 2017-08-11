@@ -2,6 +2,7 @@ import React from 'react';
 import MarketLayout from './MarketLayout';
 import ZoomButtons from './ZoomButtons';
 import MiniMap from './MiniMap';
+import './marketStyle.less';
 
 class MarketPage extends React.Component{
 

@@ -1,20 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import menuItems from '../misc/helpers';
-import MiniMapCheckbox from './miniMapCheckbox'
+import MiniMapCheckbox from './miniMapCheckbox';4
+import Menu from './Menu';
+import './header.less';
 
-
-const menuListItems = menuItems.map((item) => {
-  return <li key={item.name}>{item.name}</li>
-});
-
-const menuButtonSet = (
-  <div className="menu-wrapper">
-    <ul>
-      {menuListItems}
-    </ul>
-  </div>
-)
 
 class Header extends React.Component{
   constructor(props){
@@ -25,7 +14,7 @@ class Header extends React.Component{
   render(){
     return(
       <header className="public">
-        {menuButtonSet}
+        <Menu />
         <MiniMapCheckbox getCheckbox={(value) => this.props.getCheckbox(value)}/>
       </header>
     )

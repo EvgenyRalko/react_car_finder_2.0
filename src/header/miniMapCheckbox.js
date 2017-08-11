@@ -21,12 +21,15 @@ class MiniMapCheckbox extends React.Component{
 
   render(){
     return(
-      <form>
-          <label>
-            Мини-карта
-            <input name="isDisplayed" type="checkbox" checked={this.state.isDisplayed} onChange={this.handleCheckboxChange} />
-          </label>
-        </form>
+      <div className="checkbox-form">
+        <form>
+            <label>
+              Мини-карта
+              <input name="isDisplayed" type="checkbox" checked={this.state.isDisplayed} onChange={this.handleCheckboxChange} />
+            </label>
+          </form>
+      </div>
+
     )
   };
 }
