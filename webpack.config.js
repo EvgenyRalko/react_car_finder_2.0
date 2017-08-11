@@ -36,6 +36,13 @@ var config = {
                 test: /\.less$/,
                 loader: 'style!css!less'
             },
+
+            {
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file',
+                include: './misc/images'
+            },
+
             {
                 test: /\.(png|woff|woff2|eot|otf|ttf|svg)(\?.*$|$)/,
                 loader: 'url-loader?limit=100000'

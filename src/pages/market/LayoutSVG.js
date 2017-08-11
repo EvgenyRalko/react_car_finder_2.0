@@ -37,7 +37,7 @@ function layoutGrid(rows, lotsPerRow) {
 
            //loops to create vertical lines
            for (let j = 0; j < rows; j++) {
-             if (j%2){
+             if ( j % 2 ){
                createVerticalLines();
                verticalLines.y1Axis += verticalLines.yDriveThruIncrement;
                verticalLines.y2Axis += verticalLines.yDriveThruIncrement;
@@ -72,13 +72,19 @@ function layoutLots(rows, lotsPerRow){
            readyRects : []
          }
 
-         for (let j = 0; j < rows; j++){
-           for (let i = 0; i < lotsPerRow; i++){
-             rect.readyRects.push(<rect key={Math.random()*100000} className="rect" x={rect.xAxis} y={rect.yAxis} height="40" width="30" />)
+         for (let j = 0, k = 0; j < rows; j++){
+           for (let i = 0; i < lotsPerRow; i++, k++){
+             rect.readyRects.push(
+               <g key={Math.random()*100000} className="group-style" data-index={k}>
+                 <rect key={Math.random()*100000} className="rect" x={rect.xAxis} y={rect.yAxis} height="40" width="30" />
+                 <text key={Math.random()*100000} className="num-style" x={rect.xAxis} y={rect.yAxis + 26}>{k+1}</text>
+               </g>
+             )
              rect.xAxis += rect.xIncrement;
            }
           rect.xAxis = 25;
-          if (j%2){
+
+          if ( j % 2 ){
             rect.yAxis += rect.yDriveThruIncrement;
           } else {
             rect.yAxis += rect.yAdjacentIncrement;

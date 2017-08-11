@@ -16,6 +16,7 @@ class MiniMapCheckbox extends React.Component{
     this.setState({
       isDisplayed : value
     });
+    this.props.getCheckbox(value);
   }
 
   render(){

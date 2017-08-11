@@ -10,7 +10,7 @@ class MarketPage extends React.Component{
       <div className="market-page">
         <MarketLayout />
         <ZoomButtons />
-        <MiniMap />
+        <MiniMap displayMap={this.props.displayMap}/>
       </div>
     )
   }

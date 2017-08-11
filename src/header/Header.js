@@ -17,11 +17,16 @@ const menuButtonSet = (
 )
 
 class Header extends React.Component{
+  constructor(props){
+    super(props);
+    console.log('header', props)
+  }
+
   render(){
     return(
       <header className="public">
         {menuButtonSet}
-        <MiniMapCheckbox />
+        <MiniMapCheckbox getCheckbox={(value) => this.props.getCheckbox(value)}/>
       </header>
     )
   }
