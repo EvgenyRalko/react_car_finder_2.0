@@ -9,7 +9,9 @@
        "indent": [1, 4],
        "comma-dangle": [0],
        "react/jsx-filename-extension": [0],
-       "react/jsx-indent": [0]
+       "react/jsx-indent": [0],
+       "react/jsx-indent-props": ['error', 4],
+       "linebreak-style": [0]
     },
     "env": {
         "browser": true

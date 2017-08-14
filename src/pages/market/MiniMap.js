@@ -1,12 +1,15 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import imgSrc from '../../misc/images/small-map_resized.jpg';
 
 
 class MiniMap extends React.Component {
+    componentDidMount() {
+        this.buildCanvasBackground();
+    }
 
-    constructor(props) {
-        super(props);
+    componentDidUpdate() {
+        this.buildCanvasBackground();
     }
 
     buildCanvasBackground() {
@@ -17,34 +20,33 @@ class MiniMap extends React.Component {
             const minimapImage = new Image();
 
             minimapImage.src = imgSrc;
-            minimapImage.onload = function () {
+            minimapImage.onload = function miniMapOnLoad() {
                 contextBackground.save();
                 contextBackground.globalAlpha = 0.5;
                 contextBackground.drawImage(minimapImage, 0, 0);
                 contextBackground.restore();
-            }
+            };
         }
-
-    }
-
-    componentDidMount() {
-        this.buildCanvasBackground();
-    }
-
-    componentDidUpdate() {
-        this.buildCanvasBackground();
     }
 
     render() {
         if (this.props.displayMap) {
             return (
                 <div>
-                    <canvas id="minimap-background" height="175" width="300"></canvas>
+                    <canvas
+                        id="minimap-background"
+                        height="175"
+                        width="300"
+                    />
                 </div>
             );
         }
-        return (<div></div>);
+        return (<div />);
     }
 }
+
+MiniMap.propTypes = {
+    displayMap: PropTypes.bool.isRequired
+};
 
 export default MiniMap;
