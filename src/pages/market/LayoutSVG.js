@@ -1,19 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LayoutLots from './LayoutLots';
 import LayoutGrid from './LayoutGrid';
-
+import Modal from './Modal';
 
 class LayoutSVG extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            selectedLot: null
+            selectedLot: null,
+            modalIsOpened: false
         };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     handleSelectedCar(value) {
         this.setState({
             selectedLot: value
+        });
+        this.props.getSelectedCar(value);
+    }
+
+    openModal() {
+        this.setState({
+            modalIsOpened: true
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpened: false
         });
     }
 
@@ -37,13 +54,27 @@ class LayoutSVG extends React.Component {
                         {'line { stroke: black; } rect{fill: rgba(255, 255, 255, .3); stroke: gray;} svg{background-color: #EBEBE9}'}
                     </style>
                     <LayoutGrid />
-                    <LayoutLots getCarNumber={value => this.handleSelectedCar(value)} />
+                    <LayoutLots
+                        getCarNumber={value => this.handleSelectedCar(value)}
+                        openModal={this.openModal}
+                    />
                 </svg>
+                <Modal
+                    show={this.state.modalIsOpened}
+                    closeModal={this.closeModal}
+                    selectedLot={this.state.selectedLot}
+                />
             </div>
-
         );
     }
 }
 
+LayoutSVG.propTypes = {
+    getSelectedCar: PropTypes.func
+};
+
+LayoutSVG.defaultProps = {
+    getSelectedCar: null
+};
 
 export default LayoutSVG;

@@ -11,6 +11,7 @@ class LayoutLots extends React.Component {
     selectCarLot(e) {
         const lotNumber = parseInt(e.target.dataset.lotId, 10);
         this.props.getCarNumber(lotNumber);
+        this.props.openModal();
     }
 
     buildLots() {
@@ -37,7 +38,6 @@ class LayoutLots extends React.Component {
                         key={groupId + k}
                         className="group-style"
                         data-lotId={k}
-
                         onClick={this.selectCarLot}
                     >
                         <rect
@@ -81,11 +81,14 @@ class LayoutLots extends React.Component {
 }
 
 LayoutLots.propTypes = {
-    getCarNumber: PropTypes.func
+    getCarNumber: PropTypes.func,
+    openModal: PropTypes.func
 };
 
+
 LayoutLots.defaultProps = {
-    getCarNumber: null
+    getCarNumber: null,
+    openModal: null
 };
 
 

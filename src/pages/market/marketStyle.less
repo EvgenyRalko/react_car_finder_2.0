@@ -1,5 +1,12 @@
 .layout-wrapper {
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+g.group-style:hover .rect-style{
+    fill: rgba(255, 255, 255, .9);
+    stroke: gray;
 }
 
 .rect-style {
@@ -7,12 +14,65 @@
     stroke: gray;
 }
 
-g:hover .rect-style{
-    fill: rgba(255, 255, 255, .9);
-    stroke: gray;
-}
-
 .group-style:hover {
     cursor: pointer;
+}
 
+.market-page {
+  position: relative;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+canvas {
+  border: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#button_wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  max-width: 500px;
+  min-height: 300px;
+  margin: 0px auto;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 50px;
+}
+
+
+.close-modal{
+  position: absolute;
+  float: right;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.car-lot-number{
+  font-size: 100px;
 }
