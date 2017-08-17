@@ -13,6 +13,7 @@ class MiniMap extends React.Component {
     }
 
     buildCanvasBackground() {
+      console.log(this.props);
         if (this.props.displayMap) {
             const canvasBackground = document.getElementById('minimap-background');
             const contextBackground = canvasBackground.getContext('2d');
@@ -41,7 +42,7 @@ class MiniMap extends React.Component {
                 </div>
             );
         }
-        return (<div />);
+        return null;
     }
 }
 

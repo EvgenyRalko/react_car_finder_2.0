@@ -1,7 +1,8 @@
 const menuItems = [
-    { name: 'Фильтр', link: '#' },
-    { name: 'Статистика', link: '#' },
-    { name: 'Печать', link: '#' }
+    { name: 'Схема', link: '/' },
+    { name: 'Фильтр', link: '/filter' },
+    { name: 'Статистика', link: '/statistics' },
+    { name: 'Печать', link: '/print' }
 ];
 
 export default menuItems;

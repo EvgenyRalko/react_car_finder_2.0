@@ -1,8 +1,9 @@
 import React from 'react';
 import menuItems from '../misc/helpers';
+import { Link, browserHistory } from 'react-router-dom';
 
 const menuListItems = menuItems.map(item =>
-    <li key={item.name} className="menu-item">{item.name}</li>
+    <Link to={item.link} key={item.name}><li key={item.name} className="menu-item">{item.name}</li></Link>
 );
 
 const Menu = () =>

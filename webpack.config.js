@@ -17,7 +17,8 @@ var config = {
 	},
 
 	devServer: {
-		port: 5555
+		port: 5555,
+		historyApiFallback: true
 	},
 
 	devtool: 'source-map',

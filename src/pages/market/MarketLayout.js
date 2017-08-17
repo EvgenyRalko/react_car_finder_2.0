@@ -1,5 +1,6 @@
 import React from 'react';
 import LayoutSVG from './LayoutSVG';
+import MiniMap from './MiniMap';
 
 class MarketLayout extends React.Component {
     constructor(props) {
@@ -18,7 +19,12 @@ class MarketLayout extends React.Component {
     render() {
         return (
             <div className="layout-wrapper">
-                <LayoutSVG getSelectedCar={value => this.getSelectedCar(value)} />
+                <LayoutSVG
+                    getSelectedCar={value => this.getSelectedCar(value)}
+
+                    viewPort={this.state.SVGViewport}
+                />
+                <MiniMap  displayMap={this.props.displayMap}/>
             </div>
         );
     }
